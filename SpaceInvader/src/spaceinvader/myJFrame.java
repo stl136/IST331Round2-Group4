@@ -1,25 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package spaceinvader;
 
+import java.awt.BorderLayout;
 import javax.swing.*;
 
-/**
- *
- * @author gOD
- */
-public class myJFrame extends JFrame{
-    
+public class myJFrame extends JFrame
+{
+
+    myJPanel mjp;
     public myJFrame ()
 	{
 		super ("Space Invader Game");
+                
+                //------------------------------------------------------
+                // Create components
 		
 
-  	 	myJPanel mjp = new myJPanel();
+  	 	mjp = new myJPanel();
     	
+                //------------------------------------------------------
+                // Choose a Layout for JFrame and 
+                // add Jpanel to JFrame according to layout
+                
+                
+                getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(mjp,"Center");
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
