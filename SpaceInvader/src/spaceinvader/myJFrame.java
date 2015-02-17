@@ -17,6 +17,8 @@ public class myJFrame extends JFrame
 		
 
   	 	mjp = new myJPanel();
+                //this.setLocationRelativeTo(null);
+                this.setResizable(false); 
     	
                 //------------------------------------------------------
                 // Choose a Layout for JFrame and 
@@ -25,6 +27,8 @@ public class myJFrame extends JFrame
                 
                 getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(mjp,"Center");
+
+                
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize (640, 480);

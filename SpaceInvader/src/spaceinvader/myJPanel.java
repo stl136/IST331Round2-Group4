@@ -3,7 +3,9 @@ package spaceinvader;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import javax.swing.*;
 
 public class myJPanel extends JPanel
@@ -14,20 +16,18 @@ public class myJPanel extends JPanel
     JSlider slider;
 
 
+   
     
     public myJPanel()
 	{
             
-            
-		setBackground(Color.pink);
+                
+		setBackground(Color.white);
+                
 
                 
 		setLayout(null);
-          
-                
-                
-                setLayout(null);
-        
+
                 start = new JButton("Start the game");
                 exit = new JButton("Exit");
 
@@ -51,7 +51,7 @@ public class myJPanel extends JPanel
 
                 slider = new JSlider();
                 
-                
+                                
                 start.setBounds(new Rectangle(20,100,150,50));
                 exit.setBounds(new Rectangle(20,200,150,50));
                 
@@ -89,8 +89,9 @@ public class myJPanel extends JPanel
                 add(background1);
                 add(background2);
                 add(slider);
-
                 
                 
-}
+    }
+    
+    
 }
