@@ -2,13 +2,18 @@
 package spaceinvader;
 
 import java.awt.BorderLayout;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class myJFrame extends JFrame
+public class MyJFrame extends JFrame
 {
 
-    myJPanel mjp;
-    public myJFrame ()
+    MyJPanel mjp;
+    public MyJFrame ()
 	{
 		super ("Space Invader Game");
                 
@@ -16,8 +21,19 @@ public class myJFrame extends JFrame
                 // Create components
 		
 
-  	 	mjp = new myJPanel();
-                //this.setLocationRelativeTo(null);
+                Image img = null;
+                try 
+                {
+                    img = ImageIO.read(new File("background.jpg"));
+                } catch (IOException e) 
+                {
+                    e.printStackTrace();
+                }
+
+                
+  	 	mjp = new MyJPanel(img);
+                this.setLocationRelativeTo(null);
+                this.setLocation(320, 150);
                 this.setResizable(false); 
     	
                 //------------------------------------------------------

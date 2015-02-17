@@ -3,25 +3,27 @@ package spaceinvader;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.*;
 
-public class myJPanel extends JPanel
+public class MyJPanel extends BackgroundPanel
 {
     
     JButton start, exit, character1, character2, target1, target2, background1, background2;
     JLabel label1, label2, label3, label4;
     JSlider slider;
-
-
-   
     
-    public myJPanel()
-	{
+    Font font = new Font("Comic Sans", Font.BOLD,14);
+
+    
+    
+    public MyJPanel(Image image)
+    {
             
-                
+                super(image);
 		setBackground(Color.white);
                 
 
@@ -56,7 +58,7 @@ public class myJPanel extends JPanel
                 exit.setBounds(new Rectangle(20,200,150,50));
                 
                 
-                label1.setBounds(new Rectangle(420,10,150,50));
+                label1.setBounds(new Rectangle(405,10,150,50));
                 character1.setBounds(new Rectangle(400,50,50,50));
                 character2.setBounds(new Rectangle(500,50,50,50));
                 
@@ -65,7 +67,7 @@ public class myJPanel extends JPanel
                 target2.setBounds(new Rectangle(500, 140, 50, 50));
                 
                 
-                label3.setBounds(new Rectangle(420,200,150,50));
+                label3.setBounds(new Rectangle(397,200,160,50));
                 background1.setBounds(new Rectangle(400, 240, 50, 50));
                 background2.setBounds(new Rectangle(500, 240, 50, 50));
                 
@@ -74,7 +76,15 @@ public class myJPanel extends JPanel
                 slider.setBounds(new Rectangle(350, 280, 250, 250));
                 
                 
-
+               label1.setForeground(Color.white);
+               label2.setForeground(Color.white);
+               label3.setForeground(Color.white);
+               label4.setForeground(Color.white);
+               
+               label1.setFont(font);
+               label2.setFont(font);
+               label3.setFont(font);
+               label4.setFont(font);
 
                 add(start);
                 add(exit);
