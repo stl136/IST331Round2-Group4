@@ -15,7 +15,7 @@ public class myJFrame extends JFrame{
     
     public myJFrame ()
 	{
-		super ();
+		super ("Space Invader Game");
 		
 
   	 	myJPanel mjp = new myJPanel();
