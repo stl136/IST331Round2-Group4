@@ -9,7 +9,7 @@ public class SpaceInvader
         //Liam Neigh
         //Stephanie Larar
         //Cody Hubley
-        
+         myJFrame mjf = new myJFrame();
         System.out.println("new stuff");
     }
     
