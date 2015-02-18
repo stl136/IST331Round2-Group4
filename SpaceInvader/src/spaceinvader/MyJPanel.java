@@ -13,7 +13,7 @@ public class MyJPanel extends BackgroundPanel
 {
     
     JButton start, exit, character1, character2, target1, target2, background1, background2;
-    JLabel label1, label2, label3, label4;
+    JLabel label1, label2, label3, label4, high, low, medium;
     JSlider slider;
     
     Font font = new Font("Comic Sans", Font.BOLD,14);
@@ -45,7 +45,12 @@ public class MyJPanel extends BackgroundPanel
                 label3 = new JLabel("Choose a background");
                 label4 = new JLabel("Choose Difficulty");
                 
+                high = new JLabel("High");
+                medium = new JLabel("medium");
+                low = new JLabel("low");
+                
                 character1 = new JButton();
+                
                 character2 = new JButton();
                 
                 target1 = new JButton();
@@ -81,6 +86,20 @@ public class MyJPanel extends BackgroundPanel
                 label4.setBounds(new Rectangle(420, 330, 150, 50));
                 slider.setBounds(new Rectangle(350, 280, 250, 250));
                 
+                high.setBounds(new Rectangle(355, 400, 50, 50));
+                high.setFont(font);
+                high.setForeground(Color.white);
+                
+                
+                medium.setBounds(new Rectangle(448, 400, 150, 50));
+                medium.setFont(font);
+                medium.setForeground(Color.white);
+                
+                
+                low.setBounds(new Rectangle(570, 400, 50, 50));
+                low.setFont(font);
+                low.setForeground(Color.white);
+                
                 
                label1.setForeground(Color.white);
                label2.setForeground(Color.white);
@@ -105,6 +124,9 @@ public class MyJPanel extends BackgroundPanel
                 add(background1);
                 add(background2);
                 add(slider);
+                add(high);
+                add(medium);
+                add(low);
                 
                 
     }
