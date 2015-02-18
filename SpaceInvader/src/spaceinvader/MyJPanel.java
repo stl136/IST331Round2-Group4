@@ -17,6 +17,7 @@ public class MyJPanel extends BackgroundPanel
     JSlider slider;
     
     Font font = new Font("Comic Sans", Font.BOLD,14);
+    Font font2 = new Font("Comis Sans", Font.BOLD,14);
 
     
     
@@ -31,7 +32,12 @@ public class MyJPanel extends BackgroundPanel
 		setLayout(null);
 
                 start = new JButton("Start the game");
+                start.setFont(font2);
+                start.setForeground(Color.blue);
+                
                 exit = new JButton("Exit");
+                exit.setFont(font2);
+                exit.setForeground(Color.blue);
 
 
                 label1 = new JLabel("Choose a character");
