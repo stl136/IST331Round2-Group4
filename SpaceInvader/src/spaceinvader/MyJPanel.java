@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class MyJPanel extends BackgroundPanel
@@ -18,6 +20,16 @@ public class MyJPanel extends BackgroundPanel
     
     Font font = new Font("Comic Sans", Font.BOLD,14);
     Font font2 = new Font("Comis Sans", Font.BOLD,14);
+
+    ImageIcon characterIcon1 = new ImageIcon("character1.jpg");
+    ImageIcon characterIcon2 = new ImageIcon("character2.jpg");
+    
+    ImageIcon targetIcon1 = new ImageIcon("target1.jpg");
+    ImageIcon targetIcon2 = new ImageIcon("target2.jpg");
+    
+    ImageIcon backgroundIcon1 = new ImageIcon("bg1.jpg");
+    ImageIcon backgroundIcon2 = new ImageIcon("bg2.jpg");
+
 
     
     public MyJPanel(Image image)
@@ -48,16 +60,15 @@ public class MyJPanel extends BackgroundPanel
                 medium = new JLabel("medium");
                 low = new JLabel("low");
                 
-                character1 = new JButton();
+                character1 = new JButton(characterIcon1);
+                character2 = new JButton(characterIcon2);
                 
-                character2 = new JButton();
-                
-                target1 = new JButton();
-                target2 = new JButton();
+                target1 = new JButton(targetIcon1);
+                target2 = new JButton(targetIcon2);
                 
                 
-                background1 = new JButton();
-                background2 = new JButton();
+                background1 = new JButton(backgroundIcon1);
+                background2 = new JButton(backgroundIcon2);
                 
                 
 
@@ -83,19 +94,19 @@ public class MyJPanel extends BackgroundPanel
                 
                 
                 label4.setBounds(new Rectangle(420, 330, 150, 50));
-                slider.setBounds(new Rectangle(350, 280, 250, 250));
+                slider.setBounds(new Rectangle(360, 280, 250, 250));
                 
-                high.setBounds(new Rectangle(355, 400, 50, 50));
+                high.setBounds(new Rectangle(365, 400, 50, 50));
                 high.setFont(font);
                 high.setForeground(Color.white);
                 
                 
-                medium.setBounds(new Rectangle(448, 400, 150, 50));
+                medium.setBounds(new Rectangle(458, 400, 150, 50));
                 medium.setFont(font);
                 medium.setForeground(Color.white);
                 
                 
-                low.setBounds(new Rectangle(570, 400, 50, 50));
+                low.setBounds(new Rectangle(580, 400, 50, 50));
                 low.setFont(font);
                 low.setForeground(Color.white);
                 
