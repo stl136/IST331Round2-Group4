@@ -20,7 +20,6 @@ public class MyJPanel extends BackgroundPanel
     Font font2 = new Font("Comis Sans", Font.BOLD,14);
 
     
-    
     public MyJPanel(Image image)
     {
             
