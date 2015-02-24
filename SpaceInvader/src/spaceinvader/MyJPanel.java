@@ -7,11 +7,13 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class MyJPanel extends BackgroundPanel
+public class MyJPanel extends BackgroundPanel implements ActionListener
 {
     
     JButton start, exit, character1, character2, target1, target2, background1, background2;
@@ -74,6 +76,10 @@ public class MyJPanel extends BackgroundPanel
 
                 slider = new JSlider();
                 
+                
+                //button listener
+                
+
                                 
                 start.setBounds(new Rectangle(20,100,150,50));
                 exit.setBounds(new Rectangle(20,200,150,50));
@@ -120,6 +126,23 @@ public class MyJPanel extends BackgroundPanel
                label2.setFont(font);
                label3.setFont(font);
                label4.setFont(font);
+               
+               start.addActionListener(this);
+               exit.addActionListener(this);
+               
+               character1.addActionListener(this);
+               character2.addActionListener(this);
+               
+               target1.addActionListener(this);
+               target2.addActionListener(this);
+               
+               background1.addActionListener(this);
+               background2.addActionListener(this);
+               
+               
+               
+               
+               
 
                 add(start);
                 add(exit);
@@ -140,6 +163,46 @@ public class MyJPanel extends BackgroundPanel
                 
                 
     }
+
+ 
+
+    private static class ButtonListener 
+    {
+
+        public ButtonListener() 
+        {
+            
+        }
+    }
+    
+   
+      public void actionPerformed(ActionEvent e) 
+      {
+          Object obj = e.getSource();
+          if(obj == exit)
+          {
+              System.exit(0);
+          }
+          
+          
+          if(obj == start) 
+          {
+            GamePanel gamePanel = new GamePanel();
+            this.setVisible(false);
+          } 
+          else 
+          {
+              
+          }
+          
+          if(obj == character1)
+          {
+              
+          }
+          
+
+          
+      }
     
     
 }
