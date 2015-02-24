@@ -12,7 +12,7 @@ import javax.swing.*;
 public class MyJFrame extends JFrame
 {
 
-    MyJPanel mjp;
+    MainMenu mjp;
     public MyJFrame ()
 	{
 		super ("Space Invader Game");
@@ -30,8 +30,12 @@ public class MyJFrame extends JFrame
                     e.printStackTrace();
                 }
 
+
+  	 	mjp = new MainMenu(img, this);
                 
-  	 	mjp = new MyJPanel(img);
+             
+                
+                
                 this.setLocationRelativeTo(null);
                 this.setLocation(320, 150);
                 this.setResizable(false); 
@@ -43,6 +47,8 @@ public class MyJFrame extends JFrame
                 
                 getContentPane().setLayout(new BorderLayout());
 		getContentPane().add(mjp,"Center");
+                
+               
 
                 
 

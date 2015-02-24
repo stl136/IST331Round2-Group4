@@ -13,12 +13,16 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class MyJPanel extends BackgroundPanel implements ActionListener
+public class MainMenu extends BackgroundPanel implements ActionListener
 {
     
-    JButton start, exit, character1, character2, target1, target2, background1, background2;
+    JButton start, exit;
     JLabel label1, label2, label3, label4, high, low, medium;
     JSlider slider;
+    
+    JLabel background1, background2, character1, character2, target1, target2;
+    
+    JRadioButton bg1, bg2 , c1, c2, t1, t2;
     
     Font font = new Font("Comic Sans", Font.BOLD,14);
     Font font2 = new Font("Comis Sans", Font.BOLD,14);
@@ -31,16 +35,17 @@ public class MyJPanel extends BackgroundPanel implements ActionListener
     
     ImageIcon backgroundIcon1 = new ImageIcon("bg1.jpg");
     ImageIcon backgroundIcon2 = new ImageIcon("bg2.jpg");
-
-
+ 
+    MyJFrame jFrame;
     
-    public MyJPanel(Image image)
+    public MainMenu(Image image, MyJFrame jFrame)
     {
             
                 super(image);
 		setBackground(Color.white);
                 
 
+                this.jFrame = jFrame;
                 
 		setLayout(null);
 
@@ -62,22 +67,42 @@ public class MyJPanel extends BackgroundPanel implements ActionListener
                 medium = new JLabel("medium");
                 low = new JLabel("low");
                 
-                character1 = new JButton(characterIcon1);
-                character2 = new JButton(characterIcon2);
+                character1 = new JLabel(characterIcon1);
+                character2 = new JLabel(characterIcon2);
                 
-                target1 = new JButton(targetIcon1);
-                target2 = new JButton(targetIcon2);
-                
-                
-                background1 = new JButton(backgroundIcon1);
-                background2 = new JButton(backgroundIcon2);
+                target1 = new JLabel(targetIcon1);
+                target2 = new JLabel(targetIcon2);
                 
                 
+                background1 = new JLabel(backgroundIcon1);
+                background2 = new JLabel(backgroundIcon2);
+                
+                
+                //group radio buttons. backgroud groups
+                ButtonGroup bgGroup = new ButtonGroup();
+                bg1 = new JRadioButton();
+                bg2 = new JRadioButton();
+                bgGroup.add(bg1);
+                bgGroup.add(bg2);
+                
+                //character radio button group
+                ButtonGroup cGroup = new ButtonGroup();
+                c1 = new JRadioButton();
+                c2 = new JRadioButton();
+                cGroup.add(c1);
+                cGroup.add(c2);
+                
+                //target radio buttButtonGroup 
+                ButtonGroup tGroup = new ButtonGroup();
+                t1 = new JRadioButton();
+                t2 = new JRadioButton();
+                tGroup.add(t1);
+                tGroup.add(t2); 
 
                 slider = new JSlider();
                 
                 
-                //button listener
+                
                 
 
                                 
@@ -88,15 +113,25 @@ public class MyJPanel extends BackgroundPanel implements ActionListener
                 label1.setBounds(new Rectangle(405,10,150,50));
                 character1.setBounds(new Rectangle(400,50,50,50));
                 character2.setBounds(new Rectangle(500,50,50,50));
+                c1.setBounds(new Rectangle(455,50,50,50));
+                c2.setBounds(new Rectangle(555, 50,50,50));
+                c1.setSelected(true);
+                
                 
                 label2.setBounds(new Rectangle(420,100,150,50));
                 target1.setBounds(new Rectangle(400, 140, 50, 50));
                 target2.setBounds(new Rectangle(500, 140, 50, 50));
+                t1.setBounds(new Rectangle(455, 140, 50, 50));
+                t2.setBounds(new Rectangle(555, 140, 50, 50));
+                t1.setSelected(true);
                 
                 
                 label3.setBounds(new Rectangle(397,200,160,50));
                 background1.setBounds(new Rectangle(400, 240, 50, 50));
                 background2.setBounds(new Rectangle(500, 240, 50, 50));
+                bg1.setBounds(new Rectangle(460, 254, 20, 20));
+                bg2.setBounds(new Rectangle(560, 240, 50, 50));
+                bg1.setSelected(true);
                 
                 
                 label4.setBounds(new Rectangle(420, 330, 150, 50));
@@ -130,14 +165,8 @@ public class MyJPanel extends BackgroundPanel implements ActionListener
                start.addActionListener(this);
                exit.addActionListener(this);
                
-               character1.addActionListener(this);
-               character2.addActionListener(this);
                
-               target1.addActionListener(this);
-               target2.addActionListener(this);
                
-               background1.addActionListener(this);
-               background2.addActionListener(this);
                
                
                
@@ -160,6 +189,12 @@ public class MyJPanel extends BackgroundPanel implements ActionListener
                 add(high);
                 add(medium);
                 add(low);
+                add(bg1);
+                add(bg2);
+                add(c1);
+                add(c2);
+                add(t1);
+                add(t2);
                 
                 
     }
@@ -187,22 +222,26 @@ public class MyJPanel extends BackgroundPanel implements ActionListener
           
           if(obj == start) 
           {
-            GamePanel gamePanel = new GamePanel();
-            this.setVisible(false);
+            GamePanel gamePanel = new GamePanel(0);
+            
+            jFrame.remove(this);
+            jFrame.add(gamePanel);
+            jFrame.revalidate();
+            jFrame.pack();
+            
           } 
           else 
           {
               
           }
           
-          if(obj == character1)
-          {
-              
-          }
+          
+        
+      }
           
 
           
-      }
+      
     
     
 }
