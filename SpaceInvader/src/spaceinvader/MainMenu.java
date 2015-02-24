@@ -100,9 +100,12 @@ public class MainMenu extends BackgroundPanel implements ActionListener
                 tGroup.add(t2); 
 
                 slider = new JSlider();
-                
-                
-                
+             
+                //Get the current value
+                slider.setMinorTickSpacing(25);
+                slider.setMajorTickSpacing(25);
+                slider.setPaintTicks(true);
+                slider.setSnapToTicks(true);    
                 
 
                                 
@@ -135,7 +138,7 @@ public class MainMenu extends BackgroundPanel implements ActionListener
                 
                 
                 label4.setBounds(new Rectangle(420, 330, 150, 50));
-                slider.setBounds(new Rectangle(360, 280, 250, 250));
+                slider.setBounds(new Rectangle(360, 270, 250, 250));
                 
                 high.setBounds(new Rectangle(365, 400, 50, 50));
                 high.setFont(font);
