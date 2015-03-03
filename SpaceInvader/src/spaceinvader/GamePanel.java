@@ -5,11 +5,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -19,11 +24,21 @@ import javax.swing.Timer;
 public class GamePanel extends JPanel implements KeyListener
 {
     Image image1, image2;
-    JLabel alien, alien1, alien2, alien3, alien4, target1;
+    
+    ArrayList<Alien> aliens;
+    
+    boolean movingRight = true;
+    boolean movingDown = false;
+    
+    
+    JLabel target1, alien1;
+    
     
     ImageIcon alienIcon;
     ImageIcon targetIcon;
     Timer timer;
+    TimerListener listener;
+    
     
     public GamePanel(int defaultBackground, int defaultCharacter, int defaultTarget)
         {
@@ -31,6 +46,37 @@ public class GamePanel extends JPanel implements KeyListener
            // System.out.println(defaultBackground);
             System.out.println(defaultCharacter);
             setFocusable(true);
+            
+         //   timer.start();
+            this.aliens = new ArrayList<Alien>();
+            int x = 0;
+            int y = 50;
+            for (int i = 1; i < 17; i++) 
+            {
+                if(i <= 4)
+                {
+                    this.aliens.add(new Alien((x + 50), y,true));
+                    x +=150;
+                }
+                if(i > 4 && i <=8)
+                {                    
+                    this.aliens.add(new Alien(x, (y + 150), true));
+                    x+=150;
+                }
+                if(i > 8 && i<= 12)
+                {
+                  this.aliens.add(new Alien(x, (y + 110), true));
+                    x+=150;
+                }
+                if(i > 12 && i<= 16)
+                {
+                  this.aliens.add(new Alien(x, (y + 165), true));
+                   x+=150;
+                }     
+            }
+	 
+            
+            
             
             try 
                 {
@@ -62,6 +108,13 @@ public class GamePanel extends JPanel implements KeyListener
                 {
                     e.printStackTrace();
                 }
+            
+            for (Alien a : aliens)
+            {
+                alien1 = new JLabel(alienIcon);
+                alien1.setBounds(new Rectangle(a.alienX, a.alienY));
+                add(alien1);
+            }
 
             
             
@@ -72,27 +125,12 @@ public class GamePanel extends JPanel implements KeyListener
                     
             target1 = new JLabel(targetIcon);   
             
-            alien = new JLabel(alienIcon);
-            alien1 = new JLabel(alienIcon);
-            alien2 = new JLabel(alienIcon);
-            alien3 = new JLabel(alienIcon);
-            alien4 = new JLabel(alienIcon);
-            
-            alien.setBounds(new Rectangle(200, 100, 50,50));
-            alien1.setBounds(new Rectangle(250, 100, 50,50));
-            alien2.setBounds(new Rectangle(300, 100, 50,50));
-            alien3.setBounds(new Rectangle(350, 100, 50,50));
-            alien4.setBounds(new Rectangle(400, 100, 50,50));
-            
             target1.setBounds(new Rectangle(0, 430, 50, 50));
             addKeyListener(this);
-            
-            add(alien);
-            add(alien1);
-            add(alien2);
-            add(alien3);
-            add(alien4);
+       
             add(target1);
+            
+           
             
         }
     
@@ -148,6 +186,26 @@ public class GamePanel extends JPanel implements KeyListener
         }
      
 }
+     
+     
+     private class TimerListener implements ActionListener
+        {
+            Random r = new Random(); 
+            int clicked;
+            
+
+            public void actionPerformed(ActionEvent e)
+            {
+                 if (e.getSource() == timer)
+                {
+                    
+                }
+
+            
+                
+            
+            }
+        }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -160,4 +218,6 @@ public class GamePanel extends JPanel implements KeyListener
     }
 
    
+    
+    
 }
