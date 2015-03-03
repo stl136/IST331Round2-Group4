@@ -31,11 +31,12 @@ public class GamePanel extends JPanel implements KeyListener
     boolean movingDown = false;
     
     
-    JLabel target1, alien1;
+    JLabel target1, alien1, shot;
     
     
     ImageIcon alienIcon;
     ImageIcon targetIcon;
+    ImageIcon shotIcon = new ImageIcon("shot.png"); 
     Timer timer;
     TimerListener listener;
     
@@ -121,8 +122,7 @@ public class GamePanel extends JPanel implements KeyListener
             setMinimumSize(new Dimension(640, 480));
             setPreferredSize(new Dimension(640, 480));
             setLayout(null);
-            
-                    
+
             target1 = new JLabel(targetIcon);   
             
             target1.setBounds(new Rectangle(0, 430, 50, 50));
@@ -183,6 +183,14 @@ public class GamePanel extends JPanel implements KeyListener
            target1.setBounds(new Rectangle(targetX, 430, 50, 50)); 
            }
 
+        }
+        
+        if (key == KeyEvent.VK_SPACE) {
+           System.out.println("space");
+           shot = new JLabel(shotIcon);
+           shot.setBounds(new Rectangle(target1.getX() + 23, target1.getY() - 25, 5, 30));
+           add(shot);
+           repaint();
         }
      
 }
