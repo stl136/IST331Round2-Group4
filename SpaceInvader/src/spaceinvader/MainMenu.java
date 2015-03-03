@@ -9,6 +9,8 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,21 +24,27 @@ public class MainMenu extends BackgroundPanel implements ActionListener
     
     JLabel background1, background2, character1, character2, target1, target2;
     
+    int defaultBackground, defaultCharacter, defaultTarget;
+    
     JRadioButton bg1, bg2 , c1, c2, t1, t2;
     
     Font font = new Font("Comic Sans", Font.BOLD,14);
     Font font2 = new Font("Comis Sans", Font.BOLD,14);
 
-    ImageIcon characterIcon1 = new ImageIcon("character1.jpg");
-    ImageIcon characterIcon2 = new ImageIcon("character2.jpg");
+    ImageIcon characterIcon1 = new ImageIcon("character1.png");
+    ImageIcon characterIcon2 = new ImageIcon("character2.png");
     
-    ImageIcon targetIcon1 = new ImageIcon("target1.jpg");
-    ImageIcon targetIcon2 = new ImageIcon("target2.jpg");
+    ImageIcon targetIcon1 = new ImageIcon("target1.png");
+    ImageIcon targetIcon2 = new ImageIcon("target2.png");
     
     ImageIcon backgroundIcon1 = new ImageIcon("bg1.jpg");
     ImageIcon backgroundIcon2 = new ImageIcon("bg2.jpg");
  
     MyJFrame jFrame;
+    
+    Image image1;
+    
+    Timer timer; 
     
     public MainMenu(Image image, MyJFrame jFrame)
     {
@@ -168,6 +176,14 @@ public class MainMenu extends BackgroundPanel implements ActionListener
                start.addActionListener(this);
                exit.addActionListener(this);
                
+               bg1.addActionListener(this);
+               bg2.addActionListener(this);
+               c1.addActionListener(this);
+               c2.addActionListener(this);
+               t1.addActionListener(this);
+               t2.addActionListener(this);
+               
+               
                
                
                
@@ -217,6 +233,38 @@ public class MainMenu extends BackgroundPanel implements ActionListener
       public void actionPerformed(ActionEvent e) 
       {
           Object obj = e.getSource();
+          GamePanel gamePanel = new GamePanel(defaultBackground, defaultCharacter, defaultTarget);
+          
+          if(obj == bg1)
+          {
+              defaultBackground = 0;
+          }
+          
+          if(obj == bg2)
+          {
+              defaultBackground = 1;
+          }
+          
+          if(obj == c1)
+          {
+              defaultCharacter = 0;
+          }
+          
+          if(obj == c2)
+          {
+              defaultCharacter = 1;
+          }
+          
+          if(obj == t1)
+          {
+              defaultTarget = 0;
+          }
+          
+          if(obj == t2)
+          {
+              defaultTarget = 1;
+          }
+          
           if(obj == exit)
           {
               System.exit(0);
@@ -225,26 +273,34 @@ public class MainMenu extends BackgroundPanel implements ActionListener
           
           if(obj == start) 
           {
-            GamePanel gamePanel = new GamePanel(0);
+            
+            
             
             jFrame.remove(this);
             jFrame.add(gamePanel);
             jFrame.revalidate();
             jFrame.pack();
             
-          } 
+          }
           else 
           {
               
           }
           
           
+          
+
         
       }
+      
+      
+
+}
+      
           
 
           
       
     
     
-}
+
