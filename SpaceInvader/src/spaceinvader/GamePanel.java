@@ -49,28 +49,28 @@ public class GamePanel extends JPanel implements KeyListener
             
          //   timer.start();
             this.aliens = new ArrayList<Alien>();
-            int x = 0;
+            int x = 50;
             int y = 50;
             for (int i = 1; i < 17; i++) 
             {
                 if(i <= 4)
                 {
-                    this.aliens.add(new Alien((x + 50), y,true));
+                    this.aliens.add(new Alien(x, y,true));
                     x +=150;
                 }
                 if(i > 4 && i <=8)
                 {                    
-                    this.aliens.add(new Alien(x, (y + 150), true));
+                    this.aliens.add(new Alien((x - 600), (y + 100), true));
                     x+=150;
                 }
                 if(i > 8 && i<= 12)
                 {
-                  this.aliens.add(new Alien(x, (y + 110), true));
+                  this.aliens.add(new Alien((x - 1200), (y + 200), true));
                     x+=150;
                 }
                 if(i > 12 && i<= 16)
                 {
-                  this.aliens.add(new Alien(x, (y + 165), true));
+                  this.aliens.add(new Alien((x - 1800), (y + 300), true));
                    x+=150;
                 }     
             }
