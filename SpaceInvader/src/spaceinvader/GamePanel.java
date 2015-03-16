@@ -26,6 +26,8 @@ public class GamePanel extends JPanel implements KeyListener
     Image image1, image2;
     
     ArrayList<Alien> aliens;
+    ArrayList<JLabel> aliensPhoto;
+    
     
     boolean movingRight = true;
     boolean movingDown = false;
@@ -85,10 +87,10 @@ public class GamePanel extends JPanel implements KeyListener
                 {
                     if(defaultBackground == 0)
                     {
-                    image1 = ImageIO.read(new File("src/bgImages/background1.jpg"));
+                    image1 = ImageIO.read(new File("background1.jpg"));
                     }
                     else
-                    image1 = ImageIO.read(new File("src/bgImages/background2.jpg"));
+                    image1 = ImageIO.read(new File("background2.jpg"));
                     
                     if(defaultCharacter == 0)
                     {
@@ -154,14 +156,31 @@ public class GamePanel extends JPanel implements KeyListener
       {
         int key = e.getKeyCode();
         
-                if (key == KeyEvent.VK_UP) {
+                if (key == KeyEvent.VK_0) {
                     ActionListener existAction = new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
-                        for(int i = 0; i < aliens.size(); i++){
-                            aliens.get(i).move();
-                            System.out.println("up");
-                            alien1.setBounds(new Rectangle(aliens.get(i).alienX, aliens.get(i).alienY));
+                        
+                        for (Alien element : aliens) 
+                        {
+                             element.move();
+                             removeAll();
+                             add(target1);
+                             //add(shot);
+                             
+                            for (Alien a : aliens)
+                            {
+                            //remove(alien1);
+                            alien1 = new JLabel(alienIcon);
                             repaint();
+                           
+                            alien1.setBounds(new Rectangle(a.alienX, a.alienY));
+                            
+                            add(alien1);
+                            
+//                          
+                            
+                            }
+                                             
                         }
                     }};
                     Timer existTimer = new Timer(50, existAction);
