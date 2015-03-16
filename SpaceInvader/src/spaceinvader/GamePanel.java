@@ -153,6 +153,22 @@ public class GamePanel extends JPanel implements KeyListener
      public void keyPressed(KeyEvent e) 
       {
         int key = e.getKeyCode();
+        
+                if (key == KeyEvent.VK_UP) {
+                    ActionListener existAction = new ActionListener() {
+                    public void actionPerformed(ActionEvent evt) {
+                        for(int i = 0; i < aliens.size(); i++){
+                            aliens.get(i).move();
+                            System.out.println("up");
+                            alien1.setBounds(new Rectangle(aliens.get(i).alienX, aliens.get(i).alienY));
+                            repaint();
+                        }
+                    }};
+                    Timer existTimer = new Timer(50, existAction);
+                    existTimer.start();
+           
+
+        }
 
         if (key == KeyEvent.VK_LEFT) {
            int targetX = target1.getX();
