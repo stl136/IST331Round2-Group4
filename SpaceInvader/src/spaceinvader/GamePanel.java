@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements KeyListener
     
     boolean movingRight = true;
     boolean movingDown = false;
-    
+    boolean shotExist = false;
     
     JLabel target1, alien1, shot;
     
@@ -47,6 +47,8 @@ public class GamePanel extends JPanel implements KeyListener
            // System.out.println(defaultBackground);
             System.out.println(defaultCharacter);
             setFocusable(true);
+            
+            
             
          //   timer.start();
             this.aliens = new ArrayList<Alien>();
@@ -187,10 +189,45 @@ public class GamePanel extends JPanel implements KeyListener
         
         if (key == KeyEvent.VK_SPACE) {
            System.out.println("space");
-           shot = new JLabel(shotIcon);
-           shot.setBounds(new Rectangle(target1.getX() + 23, target1.getY() - 25, 5, 30));
-           add(shot);
-           repaint();
+           //int shotPosition = target1.getY() - 25;
+           if(shotExist == false){
+                shotExist = true;
+                ActionListener existAction = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    shotExist = false;
+                    remove(shot);
+                    revalidate();
+                    repaint();
+                }};
+                Timer existTimer = new Timer(800, existAction);
+                existTimer.setRepeats(false);
+                if(existTimer.isRunning()){
+                    existTimer.restart();
+                }
+                else existTimer.start();
+
+                shot = new JLabel(shotIcon);
+                //int shotPosition = target1.getY() - 25;
+                shot.setBounds(new Rectangle(target1.getX() + 23, target1.getY() - 25, 5, 30));
+                
+                
+                ActionListener moveAction = new ActionListener() {
+                    int repeat = 1;
+                public void actionPerformed(ActionEvent evt) {
+                    if(shotExist == true){
+                       shot.setBounds(target1.getX() + 23, target1.getY() - 25 - (repeat*10), 5, 30);
+                       repeat ++;
+                    }
+                    
+                }};
+                Timer moveTimer = new Timer(10, moveAction); 
+                if(moveTimer.isRunning()){
+                    moveTimer.restart();
+                }
+                else moveTimer.start();
+                add(shot);
+                repaint();
+           }
         }
      
 }
