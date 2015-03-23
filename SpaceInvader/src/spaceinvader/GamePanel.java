@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements KeyListener
     boolean movingDown = false;
     boolean shotExist = false;
     
-    JLabel target1, alien1, shot;
+    JLabel target1, alien1, shot, start, end;
     
     
     ImageIcon alienIcon;
@@ -50,6 +50,8 @@ public class GamePanel extends JPanel implements KeyListener
             System.out.println(defaultCharacter);
             setFocusable(true);
             
+            start = new JLabel("<html><font color='red'>Press 0 to Start</font></html>");
+            end = new JLabel("<html><font color='red'>Game Over</font></html>");
             
             
          //   timer.start();
@@ -133,6 +135,9 @@ public class GamePanel extends JPanel implements KeyListener
             addKeyListener(this);
        
             add(target1);
+            start.setBounds(new Rectangle(320, 240, 100, 50));
+            end.setBounds(new Rectangle(320, 240, 100, 50));
+            add(start);
             
            
             
@@ -157,6 +162,7 @@ public class GamePanel extends JPanel implements KeyListener
         int key = e.getKeyCode();
         
                 if (key == KeyEvent.VK_0) {
+                    remove(start);
                     ActionListener existAction = new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         
@@ -177,14 +183,18 @@ public class GamePanel extends JPanel implements KeyListener
                             
                             add(alien1);
                             
-//                          
-                            
+                            if(element.alienY > 900){
+                                add(end);
                             }
-                                             
+                            }
+                            
+                            
+                            
                         }
                     }};
                     Timer existTimer = new Timer(50, existAction);
                     existTimer.start();
+                    
            
 
         }
@@ -236,10 +246,10 @@ public class GamePanel extends JPanel implements KeyListener
                 }};
                 Timer existTimer = new Timer(800, existAction);
                 existTimer.setRepeats(false);
-                if(existTimer.isRunning()){
-                    existTimer.restart();
-                }
-                else existTimer.start();
+//                if(existTimer.isRunning()){
+//                    existTimer.restart();
+//                }
+                existTimer.start();
 
                 shot = new JLabel(shotIcon);
                 //int shotPosition = target1.getY() - 25;
